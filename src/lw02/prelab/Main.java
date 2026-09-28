@@ -1,9 +1,9 @@
 package lw02.prelab;
 
 import java.util.LinkedList;
-import java.util.Queue;
+import java.util.Queue; //first in first out atau FIFO
 import java.util.Scanner;
-import java.util.Stack;
+import java.util.Stack; // last in first out atau LIFO
 
 public class Main {
 
@@ -50,9 +50,7 @@ public class Main {
             boolean exists = false;
 
             for (String[] customer : customers) {
-
                 if (customer[0].equals(name)) {
-
                     exists = true;
                     break;
                 }
