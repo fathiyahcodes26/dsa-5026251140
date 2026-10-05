@@ -68,7 +68,7 @@ public class Main {
 
         System.out.println();
 
-        System.out.println("Rejected operations: " + nothing);
+        System.out.println("Rejected operations: " + (nothing + 1));
 
        
     }
