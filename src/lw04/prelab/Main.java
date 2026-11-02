@@ -1,10 +1,10 @@
 package lw04.prelab;
 import java.util.*;
 
+
 class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(Main.class.getResourceAsStream("branches.txt"));
-        sortBranches(sc);
         sortBranches(sc);
         sc.close();
     }
@@ -18,10 +18,10 @@ class Main {
         }
 
         int totalTarget = sc.nextInt();
-        int[] targets = new int[totalTarget];
+        int[] target = new int[totalTarget];
 
         for (int i = 0; i < totalTarget; i++) {
-            targets[i] = sc.nextInt();
+            target[i] = sc.nextInt();
         }
 
         for (int i = 1; i <= 3; i++) {
@@ -35,24 +35,26 @@ class Main {
             }
         }
 
-        for (int branch: branches) {
+        for (int branch : branches) {
             System.out.print(branch + " ");
         }
         System.out.println();
 
-        for (int i = 0; i < targets.length; i++){
+        for (int i = 0; i < target.length; i++) {
             int index = -1;
-            int target = targets[i];
+            int targetValue = target[i];
+
             for (int j = 0; j < branches.length; j++) {
-                if (target == branches[j]) {
+                if (targetValue == branches[j]) {
                     index = j;
                     break;
                 }
             }
+
             if (index != -1) {
-                System.out.println(target + ": FOUND at index " + index);
+                System.out.println(targetValue + ": FOUND at index " + index);
             } else {
-                System.out.println(target + ": NOT FOUND");
+                System.out.println(targetValue + ": NOT FOUND");
             }
         }
         System.out.println();
