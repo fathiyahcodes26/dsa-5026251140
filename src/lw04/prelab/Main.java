@@ -45,8 +45,7 @@ class Main {
             int targetnya = target[i];
             for (int j = 0; j < branches.length; j++) {
                 if (targetnya == branches[j]) {
-                    index = j;
-                    break;
+                    index = j;;
                 }
             }
             if (index != -1) {
