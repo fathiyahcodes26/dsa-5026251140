@@ -1,59 +1,72 @@
 package lw04.prelab;
+
 import java.util.*;
 
-
-class Main {
-    public static void main(String[] args) {
+public class Main{
+    public static void main(String [] args){
         Scanner sc = new Scanner(Main.class.getResourceAsStream("branches.txt"));
-        sortBranches(sc);
-        sortBranches(sc);
-        sc.close();
-    }
-    public static void sortBranches(Scanner sc) {
-        int totalSemuaBranches = sc.nextInt();
-        int[] branches = new int[totalSemuaBranches];
-        
-        for (int i = 0; i < totalSemuaBranches; i++) {
-            branches[i] = sc.nextInt();
+
+        int n = sc.nextInt();
+        int [] data = new int[n];
+
+        for(int i=0;i<n;i++){
+            data[i] = sc.nextInt();
         }
 
-        int totalTarget = sc.nextInt();
-        int[] target = new int[totalTarget];
+        int m = sc.nextInt();
+        int [] target = new int[m];
 
-        for (int i = 0; i < totalTarget; i++) {
+        for(int i=0;i<m;i++){
             target[i] = sc.nextInt();
         }
 
-        for (int i = 1; i <= 3; i++) {
-            int branch = branches[i];
-            
-            for (int j = i; j > 0; j--) {
-                if (branches[j - 1] < branch) {
-                    branches[j] = branches[j - 1];
-                    branches[j - 1] = branch;
-                }
-            }
-        }
+        insertionSort(data);
 
-        for (int branch: branches) {
-            System.out.print(branch + " ");
+        for(int i=0;i<data.length;i++){
+            System.out.print(data[i]+" ");
         }
         System.out.println();
 
-        for (int i = 0; i < target.length; i++){
-            int index = -1;
-            int targetnya = target[i];
-            for (int j = 0; j < branches.length; j++) {
-                if (targetnya == branches[j]) {
-                    index = j;;
-                }
+        for(int i=0;i<m;i++){
+            int result = linearSearch(target[i], data);
+
+            if(result != -1){
+                System.out.println(target[i]+": FOUND at index "+result);
             }
-            if (index != -1) {
-                System.out.println(targetnya + ": FOUND at index " + index);
-            } else {
-                System.out.println(targetnya + ": NOT FOUND");
+            else{
+                System.out.println(target[i]+": NOT FOUND");
             }
         }
-        System.out.println();
+
+        sc.close();
+    }
+
+    public static void insertionSort(int [] data){
+        for(int a=1;a<=3;a++){
+            int temp=data[a];
+
+            for(int b = a-1;b>=0;b--){
+                if(data[b]<temp){
+                    data[b+1]=data[b];
+                }
+                else{
+                    data[b+1]=temp;
+                    break;
+                }
+
+                if(b==0){
+                    data[b]=temp;
+                }
+            }
+        }
+    }
+
+    public static int linearSearch(int k, int [] data){
+        for(int i=0;i<data.length;i++){
+            if(data[i]==k){
+                return i;
+            }
+        }
+        return -1;
     }
 }
