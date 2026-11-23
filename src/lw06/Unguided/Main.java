@@ -19,7 +19,7 @@ public class Main {
         bst.inOrder();
         System.out.print("Postorder: ");
         bst.postOrder();
-        System.out.println("Search : " + target + bst.search(5));
+        System.out.println("Search  50 : " + bst.search(50));
 
         System.out.println("Minimum : " + bst.findMin());
         System.out.println("Maximum : " + bst.findMax());
